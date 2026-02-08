@@ -1,0 +1,149 @@
+/* ===== CONFIGURACIÓN GLOBAL ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('img/FONDO.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
+    line-height: 1.4;
+    overflow: hidden; /* Mantiene todo dentro de la pantalla de la laptop */
+    height: 100vh;
+}
+
+/* ===== HEADER COMPACTO ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    height: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-family: 'Brush Script MT', cursive;
+}
+
+header h1 span { color: #e53935; font-family: sans-serif; font-weight: bold; }
+
+/* ===== LAYOUT PRINCIPAL ===== */
+main {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 5%;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+}
+
+/* ===== CONTENEDOR IZQUIERDO (COLUMNAS) ===== */
+.menu-container {
+    flex: 2; /* Toma más espacio para las columnas */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.menu h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* AQUÍ CREAMOS LAS COLUMNAS */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* DOS COLUMNAS */
+    gap: 12px;
+    overflow-y: auto; /* Scroll interno si hay muchas pizzas */
+    padding-right: 10px;
+    margin-bottom: 15px;
+}
+
+/* Scrollbar estética */
+.menu-grid::-webkit-scrollbar { width: 4px; }
+.menu-grid::-webkit-scrollbar-thumb { background: #e53935; border-radius: 10px; }
+
+/* ===== TARJETAS DE PIZZA (MODO COMPACTO) ===== */
+.pizza {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Imagen arriba, texto abajo para ahorrar ancho */
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.pizza:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    border-color: #e53935;
+}
+
+.pizza-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.pizza-info h3 { font-size: 1em; margin: 5px 0; }
+.pizza-info p { font-size: 0.75em; color: #bbb; height: 32px; overflow: hidden; }
+.pizza-info span { font-weight: bold; color: #ff5252; display: block; margin: 5px 0; }
+
+.pizza-info button {
+    background-color: #e53935;
+    padding: 6px 15px;
+    font-size: 0.7em;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* ===== CARRITO Y VISUAL ===== */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carrito {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.visual-pizza {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual-pizza img {
+    width: 100%;
+    max-width: 350px;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+    animation: giroLento 25s infinite linear;
+}
+
+@keyframes giroLento { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

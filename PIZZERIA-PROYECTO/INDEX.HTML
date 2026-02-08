@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pizzería machi - Pizzas artesanales a domicilio">
+    <title>Pizzería machi 🍕</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>Pizzería <span>machi</span> 🍕</h1>
+            <p>Pizzas artesanales recién horneadas</p>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="menu-container">
+            <h2>🍕 Nuestro Menú</h2>
+            
+            <div class="menu-grid">
+                <article class="pizza">
+                    <img src="img/peperroni.webp" alt="Pepperoni" class="pizza-img">
+                    <div class="pizza-info">
+                        <h3>Pepperoni</h3>
+                        <p>Mozzarella y pepperoni</p>
+                        <span>$120</span>
+                        <button onclick="ordenar('Pepperoni')">Agregar</button>
+                    </div>
+                </article>
+
+                <article class="pizza">
+                    <img src="img/queso.jpg" alt="Queso" class="pizza-img">
+                    <div class="pizza-info">
+                        <h3>Queso</h3>
+                        <p>Jamón y mozzarella</p>
+                        <span>$120</span>
+                        <button onclick="ordenar('queso')">Agregar</button>
+                    </div>
+                </article>
+
+                <article class="pizza">
+                    <img src="img/chorizo.jpg" alt="Chorizo" class="pizza-img">
+                    <div class="pizza-info">
+                        <h3>Chorizo</h3>
+                        <p>Chorizo, jamón y queso</p>
+                        <span>$125</span>
+                        <button onclick="ordenar('Chorizo')">Agregar</button>
+                    </div>
+                </article>
+
+                <article class="pizza">
+                    <img src="img/champiñones,jpg.jpg" alt="Champiñones" class="pizza-img">
+                    <div class="pizza-info">
+                        <h3>Champiñones</h3>
+                        <p>Champiñones y jalapeño</p>
+                        <span>$159</span>
+                        <button onclick="ordenar('champiñones')">Agregar</button>
+                    </div>
+                </article>
+
+                <article class="pizza">
+                    <img src="img/pastor.jpg" alt="Pastor" class="pizza-img">
+                    <div class="pizza-info">
+                        <h3>Pastor</h3>
+                        <p>Carne al pastor y piña</p>
+                        <span>$185</span>
+                        <button onclick="ordenar('pastor')">Agregar</button>
+                    </div>
+                </article>
+
+                <article class="pizza">
+                    <img src="img/hawaiana.jpg" alt="Hawaiana" class="pizza-img">
+                    <div class="pizza-info">
+                        <h3>Hawaiana</h3>
+                        <p>Piña, jamón y queso</p>
+                        <span>$140</span>
+                        <button onclick="ordenar('Hawaiana')">Agregar</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="right-panel">
+            <aside class="carrito">
+                <h2>🛒 Tu Pedido</h2>
+                <ul id="lista-carrito">
+                    </ul>
+                <h3>Total: $<span id="total">0</span></h3>
+                <button class="btn-confirmar" onclick="enviarAlDueño()">Confirmar Pedido ✅</button>
+            </aside>
+
+            <div class="visual-pizza">
+                <img src="img/pepero.png" alt="Decoración" id="pizza-hero">
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html

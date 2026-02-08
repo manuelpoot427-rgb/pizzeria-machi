@@ -1,0 +1,162 @@
+/* Configuración General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: white;
+}
+
+/* Contenedor Principal con imagen de fondo */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1571066811402-9d8d09994a99?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Barra de navegación superior */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #ff4d4d;
+}
+
+.logo span {
+    color: white;
+}
+
+.phone {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Texto Central */
+h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    line-height: 1;
+    margin-bottom: 15px;
+    color: white;
+}
+
+h1 span {
+    color: #ffce67; /* Color queso/dorado */
+}
+
+p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 35px;
+    color: #ddd;
+}
+
+/* Botón de Acción */
+.btn-menu {
+    display: inline-block;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 18px 45px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 77, 77, 0.4);
+    border: 2px solid transparent;
+}
+
+.btn-menu:hover {
+    transform: translateY(-5px);
+    background-color: transparent;
+    border-color: #ff4d4d;
+    box-shadow: 0 15px 25px rgba(255, 77, 77, 0.6);
+}
+
+/* Iconos de características */
+.features {
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .feature-item {
+        font-size: 0.8rem;
+    }
+}
+/* --- Barra de Horarios --- */
+.top-bar {
+    background-color: #ff4d4d; /* Rojo para que llame la atención */
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2000;
+    letter-spacing: 1px;
+}
+
+.top-bar .separator {
+    margin: 0 15px;
+    opacity: 0.5;
+}
+
+/* --- Ajuste de la Navbar para que no tape los horarios --- */
+.navbar {
+    position: absolute;
+    top: 40px; /* Bajamos la navbar para que no choque con la top-bar */
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* El resto de tu código CSS se mantiene igual... */

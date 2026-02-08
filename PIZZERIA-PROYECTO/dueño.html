@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Pedidos - Pizzería Machi</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            /* Agregamos la imagen de fondo */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px; 
+            margin: 0;
+        }
+
+        h1 { 
+            text-align: center; 
+            color: white; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: rgba(230, 126, 34, 0.8); /* Fondo naranja tras el título */
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        /* Contenedor de cada pedido */
+        .pedido {
+            background: rgba(255, 255, 255, 0.95); /* Fondo casi blanco pero algo transparente */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 0 auto 20px auto;
+            max-width: 600px;
+            border-left: 10px solid #e67e22; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative; 
+        }
+
+        .pedido h2 { margin-top: 0; color: #e67e22; padding-right: 40px; }
+        
+        .btn-cerrar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-cerrar:hover { background: #e74c3c; transform: scale(1.1); }
+
+        .btn-limpiar {
+            display: block;
+            margin: 30px auto;
+            background: #333;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-limpiar:hover { background: white; color: #333; }
+
+        #lista-pedidos p {
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🍕 Pedidos Pendientes - Machi</h1>
+
+    <div id="lista-pedidos">
+        </div>
+
+    <button onclick="borrarTodo()" class="btn-limpiar">Limpiar todo el historial</button>
+
+    <script>
+        function borrarPedidoIndividual(index) {
+            if (confirm("¿Marcar este pedido como entregado?")) {
+                let pedidos = JSON.parse(localStorage.getItem('pedidosPizzeria')) || [];
+                pedidos.splice(index, 1); 
+                localStorage.setItem('pedidosPizzeria', JSON.stringify(pedidos));
+                cargarPedidos(); 
+            }
+        }
+
+        function cargarPedidos() {
+            const lista = document.getElementById("lista-pedidos");
+            const pedidos = JSON.parse(localStorage.getItem('pedidosPizzeria')) || [];
+
+            if (pedidos.length === 0) {
+                lista.innerHTML = "<p>No hay pedidos pendientes por ahora. 😴</p>";
+                return;
+            }
+
+            lista.innerHTML = ""; 
+
+            pedidos.forEach((pedido, index) => {
+                const div = document.createElement("div");
+                div.className = "pedido";
+                
+                let productos = pedido.items.map(p => `• ${p.nombre}`).join("<br>");
+
+                div.innerHTML = `
+                    <button onclick="borrarPedidoIndividual(${index})" class="btn-cerrar">Cerrar X</button>
+                    <h2>Pedido #${pedido.id} <small style="color:#666;">(${pedido.hora})</small></h2>
+                    <p><strong>Productos:</strong><br>${productos}</p>
+                    <hr>
+                    <p style="font-size: 1.1rem;"><strong>Total a cobrar: $${pedido.total}</strong></p>
+                `;
+                lista.appendChild(div);
+            });
+        }
+
+        function borrarTodo() {
+            if (confirm("¿Borrar todos los pedidos de la base de datos?")) {
+                localStorage.removeItem('pedidosPizzeria');
+                cargarPedidos();
+            }
+        }
+
+        setInterval(cargarPedidos, 5000);
+        cargarPedidos();
+    </script>
+</body>
+</html>
